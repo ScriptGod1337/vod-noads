@@ -1,0 +1,4 @@
+[submodule "vendor/revanced-patches"]
+	path = vendor/revanced-patches
+	url = https://github.com/ReVanced/revanced-patches.git
+	branch = main

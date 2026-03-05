@@ -1,0 +1,40 @@
+# APKs and analysis artifacts
+apks/
+analysis/**/*.apk
+analysis/**/*.apks
+analysis/**/*.xapk
+analysis/**/apk_contents/
+analysis/**/apks_contents/
+analysis/**/decompiled/
+
+# ReVanced tool artifacts
+analysis/tools/
+*.jar
+*.rvp
+*.asc
+
+# Smali patch tools
+analysis/tools/smali/
+
+# ReVanced patches build outputs
+patches/**/build/
+patches/**/.gradle/
+patches/**/local.properties
+# vendor/revanced-patches/ is a git submodule — do not ignore
+
+# Gradle
+.gradle/
+
+# IDE / editor
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+# DevContainer
+.devcontainer/
+
+# Temporary
+*.tmp
