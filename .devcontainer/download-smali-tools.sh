@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Download baksmali/smali tools and uber-apk-signer to a stable cache location.
 # Called once at container creation via postCreateCommand.
+
 set -euo pipefail
 
-TOOLS_DIR="/opt/smali-tools"
+TOOLS_DIR="${HOME}/.local/share/smali-tools"
+
 mkdir -p "$TOOLS_DIR"
 
 BASE="https://repo.maven.apache.org/maven2/org/smali"
@@ -29,13 +31,13 @@ for name in "${!JARS[@]}"; do
 done
 
 # Write a helper env file so scripts can source it
-cat > "$TOOLS_DIR/env.sh" << 'EOF'
-SMALI_TOOLS_DIR="/opt/smali-tools"
-BAKSMALI_CP="${SMALI_TOOLS_DIR}/baksmali.jar:${SMALI_TOOLS_DIR}/dexlib2.jar:${SMALI_TOOLS_DIR}/smali-util.jar:${SMALI_TOOLS_DIR}/jcommander.jar:${SMALI_TOOLS_DIR}/guava.jar"
-SMALI_CP="${SMALI_TOOLS_DIR}/smali.jar:${SMALI_TOOLS_DIR}/dexlib2.jar:${SMALI_TOOLS_DIR}/smali-util.jar:${SMALI_TOOLS_DIR}/jcommander.jar:${SMALI_TOOLS_DIR}/guava.jar:${SMALI_TOOLS_DIR}/antlr-runtime.jar"
+cat > "$TOOLS_DIR/env.sh" << EOF
+SMALI_TOOLS_DIR="${TOOLS_DIR}"
+BAKSMALI_CP="\${SMALI_TOOLS_DIR}/baksmali.jar:\${SMALI_TOOLS_DIR}/dexlib2.jar:\${SMALI_TOOLS_DIR}/smali-util.jar:\${SMALI_TOOLS_DIR}/jcommander.jar:\${SMALI_TOOLS_DIR}/guava.jar"
+SMALI_CP="\${SMALI_TOOLS_DIR}/smali.jar:\${SMALI_TOOLS_DIR}/dexlib2.jar:\${SMALI_TOOLS_DIR}/smali-util.jar:\${SMALI_TOOLS_DIR}/jcommander.jar:\${SMALI_TOOLS_DIR}/guava.jar:\${SMALI_TOOLS_DIR}/antlr-runtime.jar"
 BAKSMALI_MAIN="org.jf.baksmali.Main"
 SMALI_MAIN="org.jf.smali.Main"
-UBER_SIGNER_JAR="${SMALI_TOOLS_DIR}/uber-apk-signer.jar"
+UBER_SIGNER_JAR="\${SMALI_TOOLS_DIR}/uber-apk-signer.jar"
 export BAKSMALI_CP SMALI_CP BAKSMALI_MAIN SMALI_MAIN UBER_SIGNER_JAR
 EOF
 

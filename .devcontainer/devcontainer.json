@@ -11,7 +11,7 @@
     "--security-opt=no-new-privileges:true",
     "--dns=192.168.0.1",
     "--label=dev-sandbox=true",
-    "--label=dev-sandbox-config=netflix-noads"
+    "--label=dev-sandbox-config=vod-noads"
   ],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {},
