@@ -1,0 +1,184 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1706162002" android:versionName="6.16.2.2" android:installLocation="0" android:compileSdkVersion="35" android:compileSdkVersionCodename="15" package="com.hbo.hbonow" platformBuildVersionCode="35" platformBuildVersionName="15">
+  <uses-sdk android:minSdkVersion="22" android:targetSdkVersion="35"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <uses-permission android:name="com.android.providers.tv.permission.WRITE_EPG_DATA"/>
+  <uses-permission android:name="com.hbo.max.ACCOUNT_READ"/>
+  <uses-permission android:name="com.hbo.max.ACCOUNT_WRITE"/>
+  <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+  <uses-permission android:name="com.amazon.tv.developer.sdk.content.USE_SDK"/>
+  <uses-permission android:name="android.permission.BIND_PARTNER_TOKEN_SERVICE"/>
+  <permission android:name="com.hbo.hbonow.PERMISSION" android:protectionLevel="0x00000003"/>
+  <queries>
+    <provider android:authorities="com.hbo.max.authprovider"/>
+    <intent>
+      <action android:name="android.intent.action.VIEW"/>
+      <category android:name="android.intent.category.BROWSABLE"/>
+      <data android:scheme="https"/>
+    </intent>
+    <package android:name="com.google.android.apps.tv.launcherx"/>
+    <package android:name="com.google.android.tvlauncher"/>
+    <package android:name="com.google.android.tvrecommendations"/>
+    <package android:name="com.google.android.gms.policy_cast_dynamite"/>
+    <intent>
+      <action android:name="com.android.vending.billing.InAppBillingService.BIND"/>
+    </intent>
+    <intent>
+      <action android:name="com.appsflyer.referrer.INSTALL_PROVIDER"/>
+    </intent>
+  </queries>
+  <queries>
+    <package android:name="com.hbo.asia.androidtv"/>
+    <package android:name="com.dsmart.blu.android"/>
+    <package android:name="com.discovery.dplay"/>
+  </queries>
+  <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+  <uses-feature android:name="android.software.leanback" android:required="true"/>
+  <uses-feature android:name="amazon.lwa.quicksignup.supported"/>
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+  <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+  <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+  <uses-permission android:name="com.android.vending.BILLING"/>
+  <uses-permission android:name="com.amazon.permission.media.session.voicecommandcontrol"/>
+  <uses-permission android:name="com.amazon.device.permission.COMRADE_CAPABILITIES"/>
+  <uses-permission android:name="com.amazon.alexa.vsk_app_agent_api.permission.BIND_SERVICE_PERMISSION"/>
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="com.android.providers.tv.permission.READ_EPG_DATA"/>
+  <permission android:name="com.hbo.hbonow.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="0x00000002"/>
+  <uses-permission android:name="com.hbo.hbonow.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+  <application android:label="@7F12002D" android:icon="@7F0801ED" android:name="com.wbd.beam.BeamApplication" android:hasCode="true" android:allowBackup="false" android:largeHeap="true" android:supportsRtl="true" android:banner="@7F08005A" android:extractNativeLibs="true" android:fullBackupContent="@7F150000" android:usesCleartextTraffic="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+    <activity android:theme="@7F130211" android:name="com.wbd.beam.ArkoseActivity" android:exported="true" android:configChanges="0x00002004" android:allowEmbedded="true"/>
+    <activity android:theme="@7F130211" android:name="com.wbd.beam.LocaleActivity" android:exported="true" android:configChanges="0x00002004" android:allowEmbedded="true"/>
+    <activity android:theme="@7F130276" android:label="@7F12002D" android:name="com.wbd.beam.BeamActivity" android:exported="true" android:launchMode="3" android:screenOrientation="2" android:configChanges="0x40002DF4">
+      <meta-data android:name="tv.youi.lib_name" android:value="max"/>
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
+      </intent-filter>
+      <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:scheme="https" android:host="play.hbomax.com"/>
+        <data android:scheme="https" android:host="play.max.com"/>
+      </intent-filter>
+    </activity>
+    <service android:name="tv.youi.youiengine.player.CYIExoPlayerForegroundService" android:exported="true"/>
+    <uses-library android:name="com.amazon.tv.developer.sdk.content" android:required="false"/>
+    <service android:name="com.wbd.beam.MaxDataIntegrationService" android:permission="com.amazon.tv.developer.sdk.content.READ_DATA_SERVICE" android:exported="true"/>
+    <meta-data android:name="com.amazon.tv.developer.sdk.content.data_integration_service_class" android:value="com.wbd.beam.MaxDataIntegrationService"/>
+    <meta-data android:name="launcher.channels.lib.name" android:value="max"/>
+    <meta-data android:name="migration_package_info" android:value="BluTV|com.dsmart.blu.android.authprovider|authtoken|auth_token,HBOGo|com.onwardsmg.hbo.authprovider|authtoken|access_token,BoltDPlus|com.wbd.dplus.authprovider|authtoken|access_token"/>
+    <service android:name="com.wbd.beam.UpdateLauncherChannelsJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/>
+    <receiver android:name="com.wbd.beam.LauncherProgramIntentListener" android:permission="com.hbo.hbonow.PERMISSION" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="android.media.tv.action.INITIALIZE_PROGRAMS"/>
+        <action android:name="android.media.tv.action.PREVIEW_PROGRAM_BROWSABLE_DISABLED"/>
+        <action android:name="android.media.tv.action.PREVIEW_PROGRAM_ADDED_TO_WATCH_NEXT"/>
+        <action android:name="android.media.tv.action.WATCH_NEXT_PROGRAM_BROWSABLE_DISABLED"/>
+        <action android:name="com.hbo.hbonow.ACTION_ACTIVATION_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.wbd.beam.BootReceiver" android:permission="android.permission.RECEIVE_BOOT_COMPLETED" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="com.hbo.hbonow.action.BOOT_SERVICE"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.wbd.beam.CapabilityRequestReceiver" android:permission="com.hbo.hbonow.PERMISSION" android:exported="true">
+      <intent-filter>
+        <action android:name="com.amazon.device.REQUEST_CAPABILITIES"/>
+        <action android:name="com.hbo.hbonow.ACTION_ACTIVATION_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <service android:name="androidx.appcompat.app.AppLocalesMetadataHolderService" android:enabled="false" android:exported="false">
+      <meta-data android:name="autoStoreLocales" android:value="true"/>
+    </service>
+    <meta-data android:name="CHANNEL" android:value="MaxFireTV"/>
+    <activity android:theme="@7F130211" android:name="com.arkoselabs.sdk.activities.ShowEnforcementActivity" android:exported="false" android:configChanges="0x000005A0"/>
+    <provider android:name="com.discovery.player.cast.CastInitializer" android:enabled="false" android:exported="false" android:authorities="com.hbo.hbonow.cast_initializer"/>
+    <meta-data android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME" android:value="com.discovery.player.castsender.CastSenderOptionsProvider"/>
+    <activity android:theme="@7F13020B" android:name="com.google.android.tv.ads.controls.FallbackImageActivity" android:exported="false"/>
+    <provider android:name="com.discovery.player.cast.CastStubInitializer" android:enabled="true" android:exported="false" android:authorities="com.hbo.hbonow.cast_stub_initializer"/>
+    <receiver android:name="com.google.android.gms.cast.framework.media.MediaIntentReceiver" android:exported="false"/>
+    <service android:name="com.google.android.gms.cast.framework.ReconnectionService" android:exported="false"/>
+    <receiver android:name="com.amazon.device.iap.ResponseReceiver" android:exported="true">
+      <intent-filter>
+        <action android:name="com.amazon.inapp.purchasing.NOTIFY" android:permission="com.amazon.inapp.purchasing.Permission.NOTIFY"/>
+      </intent-filter>
+    </receiver>
+    <activity android:name="com.braze.ui.BrazeWebViewActivity" android:exported="false"/>
+    <activity android:name="com.braze.ui.activities.BrazeFeedActivity" android:exported="false"/>
+    <activity android:name="com.braze.ui.activities.ContentCardsActivity" android:exported="false"/>
+    <activity android:theme="@7F13014A" android:name="com.braze.push.NotificationTrampolineActivity" android:exported="false" android:taskAffinity=".NotificationTrampolineActivity" android:excludeFromRecents="true" android:launchMode="3" android:autoRemoveFromRecents="true"/>
+    <receiver android:name="com.braze.push.BrazePushReceiver" android:exported="false"/>
+    <meta-data android:name="com.google.android.play.billingclient.version" android:value="7.0.0"/>
+    <activity android:theme="@android:01030010" android:name="com.android.billingclient.api.ProxyBillingActivity" android:exported="false" android:configChanges="0x000005B0"/>
+    <activity android:theme="@android:01030010" android:name="com.android.billingclient.api.ProxyBillingActivityV2" android:exported="false" android:configChanges="0x000005B0"/>
+    <receiver android:name="com.wbd.beam.alexa.reporter.DynamicCapabilityReporter" android:permission="com.hbo.hbonow.PERMISSION" android:exported="true">
+      <intent-filter>
+        <action android:name="com.amazon.device.REQUEST_CAPABILITIES"/>
+        <action android:name="com.hbo.hbonow.ACTION_ACTIVATION_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <meta-data android:name="deep.link.hosts" android:value="play.hbomax.com,play.max.com"/>
+    <meta-data android:name="amazon.launcher.id" android:value="hbo_max_global"/>
+    <meta-data android:name="amazon.partner.id" android:value="HBO40_H"/>
+    <meta-data android:name="com.amazon.alexa.vsk_app_agent_api.capabilities" android:resource="@7F110005"/>
+    <receiver android:name="com.wbd.beam.alexa.receiver.AlexaDirectiveReceiver" android:permission="com.amazon.alexa.androidapplicationagent.permission.SEND_DATA" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="com.amazon.alexa.vsk_app_agent_api.ACTION_ALEXA_DIRECTIVE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="com.amazon.alexa.vsk_app_agent_api.ACTION_REPORT_CAPABILITIES"/>
+      </intent-filter>
+    </receiver>
+    <meta-data android:name="com.amazon.voice.supports_background_media_session" android:value="true"/>
+    <activity android:theme="@android:01030010" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:exported="false" android:excludeFromRecents="true"/>
+    <service android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:exported="true" android:visibleToInstantApps="true"/>
+    <activity android:theme="@android:01030010" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false"/>
+    <service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false" android:directBootAware="true">
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.remoteconfig.FirebaseRemoteConfigKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.remoteconfig.RemoteConfigRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.abt.component.AbtRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+    </service>
+    <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:exported="false" android:authorities="com.hbo.hbonow.firebaseinitprovider" android:initOrder="100" android:directBootAware="true"/>
+    <meta-data android:name="com.google.android.gms.version" android:value="@7F0C0019"/>
+    <provider android:name="androidx.startup.InitializationProvider" android:exported="false" android:authorities="com.hbo.hbonow.androidx-startup">
+      <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+      <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+    </provider>
+    <service android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery" android:exported="false">
+      <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+    </service>
+    <service android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false"/>
+    <receiver android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver" android:exported="false"/>
+    <receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP" android:enabled="true" android:exported="true" android:directBootAware="false">
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+      </intent-filter>
+    </receiver>
+    <service android:name="androidx.room.MultiInstanceInvalidationService" android:exported="false"/>
+  </application>
+</manifest>
