@@ -24,6 +24,7 @@ The fingerprint uses class/method name matching (no opcode sequence) so it survi
 
 - `3.0.412.2947`
 - `3.0.438.2347`
+- `3.0.444.557`
 
 ## Build
 

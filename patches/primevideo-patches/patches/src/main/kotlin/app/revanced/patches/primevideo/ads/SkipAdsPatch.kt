@@ -18,7 +18,8 @@ val skipAdsPatch = bytecodePatch(
     compatibleWith(
         "com.amazon.avod.thirdpartyclient"(
             "3.0.412.2947",
-            "3.0.438.2347"
+            "3.0.438.2347",
+            "3.0.444.557"
         )
     )
 
