@@ -33,8 +33,6 @@ patches/**/local.properties
 # OS
 .DS_Store
 
-# DevContainer
-.devcontainer/
 
 # Temporary
 *.tmp
