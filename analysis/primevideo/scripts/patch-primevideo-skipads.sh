@@ -144,14 +144,13 @@ fi
 
 require_cmd java
 require_cmd curl
-require_cmd rg
 require_cmd find
 require_cmd awk
 require_cmd unzip
 require_cmd git
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 
 TOOLS_DIR="${ROOT_DIR}/analysis/tools/revanced"
 REVANCED_CLI_JAR="${TOOLS_DIR}/revanced-cli.jar"
@@ -271,8 +270,8 @@ fi
 #   githubPackagesPassword=...
 if [[ "$GH_USER" == "" || "$GH_TOKEN" == "" ]]; then
   if [[ -f "${GRADLE_USER_HOME}/gradle.properties" ]]; then
-    if ! rg -q '^githubPackagesUsername=' "${GRADLE_USER_HOME}/gradle.properties" || \
-       ! rg -q '^githubPackagesPassword=' "${GRADLE_USER_HOME}/gradle.properties"; then
+    if ! grep -q '^githubPackagesUsername=' "${GRADLE_USER_HOME}/gradle.properties" || \
+       ! grep -q '^githubPackagesPassword=' "${GRADLE_USER_HOME}/gradle.properties"; then
       fail "Missing GitHub Packages credentials. Provide via env/flags or add githubPackagesUsername/githubPackagesPassword to ${GRADLE_USER_HOME}/gradle.properties."
     fi
     # Load values from gradle.properties so we can pass them via ORG_GRADLE_PROJECT_*
@@ -351,10 +350,10 @@ else
   VERIFY_DIR="${TMP_DIR}/verify"
   java -jar "$APKTOOL_JAR" d -f -r -q -p "$APKTOOL_FRAMEWORK_DIR" "$OUTPUT_APK" -o "$VERIFY_DIR" >/dev/null
 
-  SERVER_SMALI="$(rg --files "$VERIFY_DIR" | rg 'ServerInsertedAdBreakState\\.smali$' | head -n 1)"
+  SERVER_SMALI="$(find "$VERIFY_DIR" -name 'ServerInsertedAdBreakState.smali' -type f | head -n 1)"
   [[ "$SERVER_SMALI" != "" ]] || fail "Verification failed: could not find ServerInsertedAdBreakState.smali in patched APK."
 
-  rg -q 'Lapp/revanced/extension/primevideo/ads/SkipAdsPatch;->enterServerInsertedAdBreakState' \
+  grep -q 'Lapp/revanced/extension/primevideo/ads/SkipAdsPatch;->enterServerInsertedAdBreakState' \
     "$SERVER_SMALI" || fail "Verification failed: injected hook call not found in ServerInsertedAdBreakState.enter()."
 fi
 

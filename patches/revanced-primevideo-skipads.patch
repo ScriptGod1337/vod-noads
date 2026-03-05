@@ -1,8 +1,8 @@
 diff --git a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt
-index ac3a1c4..8e28a27 100644
+index ac3a1c43a..98c3dace2 100644
 --- a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt
 +++ b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt
-@@ -8,12 +8,6 @@ internal val enterServerInsertedAdBreakStateFingerprint = fingerprint {
+@@ -8,19 +8,13 @@ internal val enterServerInsertedAdBreakStateFingerprint = fingerprint {
      accessFlags(AccessFlags.PUBLIC)
      parameters("Lcom/amazon/avod/fsm/Trigger;")
      returns("V")
@@ -15,6 +15,14 @@ index ac3a1c4..8e28a27 100644
      custom { method, classDef ->
          method.name == "enter" && classDef.type == "Lcom/amazon/avod/media/ads/internal/state/ServerInsertedAdBreakState;"
      }
+ }
+ 
+ internal val doTriggerFingerprint = fingerprint {
+-    accessFlags(AccessFlags.PROTECTED)
++    accessFlags(AccessFlags.PUBLIC)
+     returns("V")
+     opcodes(
+         Opcode.IGET_OBJECT,
 @@ -30,4 +24,4 @@ internal val doTriggerFingerprint = fingerprint {
      custom { method, classDef ->
          method.name == "doTrigger" && classDef.type == "Lcom/amazon/avod/fsm/StateBase;"
@@ -23,10 +31,10 @@ index ac3a1c4..8e28a27 100644
 \ No newline at end of file
 +}
 diff --git a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt
-index c204c72..0b89790 100644
+index c204c729e..606c85af6 100644
 --- a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt
 +++ b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt
-@@ -1,18 +1,26 @@
+@@ -1,18 +1,27 @@
  package app.revanced.patches.primevideo.ads
  
  import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
@@ -49,13 +57,14 @@ index c204c72..0b89790 100644
 +    compatibleWith(
 +        "com.amazon.avod.thirdpartyclient"(
 +            "3.0.412.2947",
-+            "3.0.438.2347"
++            "3.0.438.2347",
++            "3.0.444.557"
 +        )
 +    )
  
      dependsOn(sharedExtensionPatch)
  
-@@ -22,12 +30,29 @@ val skipAdsPatch = bytecodePatch(
+@@ -22,12 +31,29 @@ val skipAdsPatch = bytecodePatch(
          // Force doTrigger() access to public so we can call it from our extension.
          doTriggerFingerprint.method.accessFlags = AccessFlags.PUBLIC.value;
  
@@ -90,13 +99,13 @@ index c204c72..0b89790 100644
  
              // Reuse the params from the original method:
              //  p0 = ServerInsertedAdBreakState
-@@ -42,4 +67,3 @@ val skipAdsPatch = bytecodePatch(
+@@ -42,4 +68,3 @@ val skipAdsPatch = bytecodePatch(
          }
      }
  }
 -
 diff --git a/settings.gradle.kts b/settings.gradle.kts
-index 4ab39e0..4acc573 100644
+index 4ab39e0f4..4acc5734d 100644
 --- a/settings.gradle.kts
 +++ b/settings.gradle.kts
 @@ -12,6 +12,18 @@ pluginManagement {
