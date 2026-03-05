@@ -1,0 +1,65 @@
+Domain,Category,Purpose,Details
+pubads.g.doubleclick.net,Ad-Serving,Google DFP/DoubleClick,Primary ad server - VAST/VMAP video ads
+pagead2.googlesyndication.com,Ad-Serving,Google Ad Network,Pixel tracking and ad serving
+www.googleadservices.com,Ad-Serving,Google Ad Services,Deep link conversion tracking
+firebase.google.com,Tracking/Analytics,Firebase Analytics,Real-time event tracking
+app-measurement.com,Tracking/Analytics,Firebase App Measurement,Event data collection backend
+cws.conviva.com,Tracking/Analytics,Conviva Gateway,Video QoE monitoring gateway
+pings.conviva.com,Tracking/Analytics,Conviva Beacons,QoE metrics transmission
+hal.testandtarget.omniture.com,Tracking/Analytics,Adobe Omniture,Test & Target personalization
+accounts.google.com,Tracking/Analytics,Google Auth,OAuth2 token management
+disneyplus.com,Disney Infrastructure,Disney+ Domain,Primary Disney+ domain
+www.disneyplus.com,Disney Infrastructure,Disney+ Web,Web-facing Disney+ domain
+starplus.com,Disney Infrastructure,Star+ Platform,Regional streaming platform
+startlus.com,Disney Infrastructure,Star+ Platform,Regional platform variant
+help.starplus.com,Disney Infrastructure,Star+ Support,Star+ help/support domain
+bam-sdk-configs.bamgrid.com,Disney Infrastructure,BAMGrid Config,Production SDK configuration
+dev-bam-sdk-configs.bamgrid.com,Disney Infrastructure,BAMGrid Config,Development SDK configuration
+staging-bam-sdk-configs.bamgrid.com,Disney Infrastructure,BAMGrid Config,Staging SDK configuration
+star.api.edge.bamgrid.com,Disney Infrastructure,BAMGrid API,Star+ API endpoint
+qa-star.api.edge.bamgrid.com,Disney Infrastructure,BAMGrid API,QA Star+ API endpoint
+global.edge.bamgrid.com,Disney Infrastructure,BAMGrid API,Global edge API
+qa.global.edge.bamgrid.com,Disney Infrastructure,BAMGrid API,QA global edge API
+lw.bamgrid.com,Disney Infrastructure,BAMGrid Service,Lightweight service
+pcs.bamgrid.com,Disney Infrastructure,BAMGrid Service,Playback Control Service
+vpe-static-dev-bamgrid-com-pcs.bamgrid.com,Disney Infrastructure,BAMGrid Service,VPE static content
+github.bamtech.co,Disney Infrastructure,BAMtech Schema,Event schema registry
+prod-ripcut-delivery.disney-plus.net,Disney Infrastructure,Content Delivery,Production content CDN
+qa-ripcut-delivery.disney-plus.net,Disney Infrastructure,Content Delivery,QA content CDN
+appconfigs.disney-plus.net,Disney Infrastructure,App Config,Application configuration server
+d2zihajmogu5jn.cloudfront.net,Disney Infrastructure,CloudFront CDN,Media asset CDN
+cdn.registerdisney.go.com,Disney Infrastructure,Registration CDN,Production registration service
+stg.cdn.registerdisney.go.com,Disney Infrastructure,Registration CDN,Staging registration service
+sdk.iad-01.braze.com,Third-Party SDK,Braze Engagement,Push notifications and messaging
+sondheim.braze.com,Third-Party SDK,Braze Service,Braze API service endpoint
+www.braze.com,Third-Party SDK,Braze Documentation,Braze documentation/support
+a08a5a5931d945e2b7a90c9f10818063@disney.my.sentry.io,Third-Party SDK,Sentry Error Tracking,Crash reporting service
+install.appcenter.ms,Third-Party SDK,Microsoft App Center,App distribution and analytics
+s3.amazonaws.com,Third-Party SDK,AWS S3,Asset storage
+www.amazon.com,Third-Party SDK,Amazon Retail,Amazon purchase/subscription
+www.amazon.ca,Third-Party SDK,Amazon Retail,Amazon Canada
+www.amazon.com.au,Third-Party SDK,Amazon Retail,Amazon Australia
+apps.apple.com,Third-Party SDK,Apple App Store,iOS app distribution
+play.google.com,Third-Party SDK,Google Play Store,Android app store and subscriptions
+www.googleapis.com,Third-Party SDK,Google APIs,OAuth and other APIs
+github.com,Third-Party SDK,GitHub,Code hosting and libraries
+issuetracker.google.com,Third-Party SDK,Google Issue Tracker,Bug/error reporting
+www.nhl.com,Third-Party SDK,NHL Content,National Hockey League content
+dashif.org,Standards,DASH Standard,DASH Industry Forum streaming spec
+aomedia.org,Standards,Media Standards,Alliance for Open Media
+www.w3.org,Standards,W3C Standards,Web standards
+schemas.android.com,Standards,Android Schema,Android namespace definitions
+schemas.microsoft.com,Standards,Microsoft Schema,Microsoft namespace definitions
+exoplayer.dev,Standards,ExoPlayer Docs,Google ExoPlayer documentation
+developer.android.com,Standards,Android Developer,Android development documentation
+developer.apple.com,Standards,Apple Developer,Apple development documentation
+goo.gl,Miscellaneous,URL Shortener,Google URL shortener
+google.com,Miscellaneous,Google Search,Google search integration
+localhost,Miscellaneous,Local Development,Local testing endpoint
+appassets.androidplatform.net,Miscellaneous,Android Assets,Android platform resources
+ns.adobe.com,Miscellaneous,Adobe Namespace,Adobe XML namespace
+xce-pluck-ui.us-east-1.bamgrid.net,Miscellaneous,Experience Monitoring,Error/experience monitoring
+%s.ipv4.cws.conviva.com,Tracking/Analytics,Conviva IPv4 Gateway,IPv4-specific Conviva gateway
+%s.ipv4.testonly.conviva.com,Tracking/Analytics,Conviva Test Gateway,IPv4 test Conviva gateway
+%s.ipv6.cws.conviva.com,Tracking/Analytics,Conviva IPv6 Gateway,IPv6-specific Conviva gateway
+%s.ipv6.testonly.conviva.com,Tracking/Analytics,Conviva Test Gateway,IPv6 test Conviva gateway

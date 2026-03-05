@@ -1,0 +1,147 @@
+================================================================================
+DISNEY+ APK v2.16.2-rc2 - QUICK REFERENCE GUIDE
+================================================================================
+
+ALL 72 DOMAINS BY CATEGORY
+================================================================================
+
+AD-SERVING (3):
+  pubads.g.doubleclick.net
+  pagead2.googlesyndication.com
+  www.googleadservices.com
+
+ANALYTICS & TRACKING (9):
+  firebase.google.com
+  app-measurement.com
+  cws.conviva.com
+  pings.conviva.com
+  hal.testandtarget.omniture.com
+  accounts.google.com
+  %s.ipv4.cws.conviva.com
+  %s.ipv4.testonly.conviva.com
+  %s.ipv6.cws.conviva.com
+  %s.ipv6.testonly.conviva.com
+
+DISNEY INFRASTRUCTURE (31):
+  disneyplus.com
+  www.disneyplus.com
+  starplus.com
+  startlus.com
+  help.starplus.com
+  bam-sdk-configs.bamgrid.com
+  dev-bam-sdk-configs.bamgrid.com
+  staging-bam-sdk-configs.bamgrid.com
+  star.api.edge.bamgrid.com
+  qa-star.api.edge.bamgrid.com
+  global.edge.bamgrid.com
+  qa.global.edge.bamgrid.com
+  lw.bamgrid.com
+  pcs.bamgrid.com
+  vpe-static-dev-bamgrid-com-pcs.bamgrid.net
+  github.bamtech.co
+  xce-pluck-ui.us-east-1.bamgrid.net
+  prod-ripcut-delivery.disney-plus.net
+  qa-ripcut-delivery.disney-plus.net
+  appconfigs.disney-plus.net
+  d2zihajmogu5jn.cloudfront.net
+  cdn.registerdisney.go.com
+  stg.cdn.registerdisney.go.com
+
+THIRD-PARTY SDKS (16):
+  sdk.iad-01.braze.com
+  sondheim.braze.com
+  www.braze.com
+  a08a5a5931d945e2b7a90c9f10818063@disney.my.sentry.io
+  install.appcenter.ms
+  s3.amazonaws.com
+  www.amazon.com
+  www.amazon.ca
+  www.amazon.com.au
+  apps.apple.com
+  play.google.com
+  www.googleapis.com
+  github.com
+  issuetracker.google.com
+  www.nhl.com
+
+STANDARDS & DOCS (8):
+  dashif.org
+  aomedia.org
+  www.w3.org
+  schemas.android.com
+  schemas.microsoft.com
+  exoplayer.dev
+  developer.android.com
+  developer.apple.com
+
+MISCELLANEOUS (5):
+  goo.gl
+  google.com
+  localhost
+  appassets.androidplatform.net
+  ns.adobe.com
+
+================================================================================
+BLOCKING RECOMMENDATIONS (if removing ads/tracking)
+================================================================================
+
+CRITICAL (Ad Servers):
+  ✗ pubads.g.doubleclick.net
+  ✗ pagead2.googlesyndication.com
+  ✗ www.googleadservices.com
+
+HIGH PRIORITY (Tracking):
+  ✗ cws.conviva.com
+  ✗ pings.conviva.com
+  ✗ app-measurement.com
+  ✗ firebase.google.com
+  ✗ %s.ipv4.cws.conviva.com
+  ✗ %s.ipv6.cws.conviva.com
+  ✗ hal.testandtarget.omniture.com
+
+MEDIUM (SDKs):
+  ? sdk.iad-01.braze.com (push notifications)
+  ? sondheim.braze.com (engagement)
+  ? a08a5a5931d945e2b7a90c9f10818063@disney.my.sentry.io (error tracking)
+
+================================================================================
+IMPORTANT INFRASTRUCTURE (DO NOT BLOCK):
+================================================================================
+  star.api.edge.bamgrid.com
+  global.edge.bamgrid.com
+  pcs.bamgrid.com
+  prod-ripcut-delivery.disney-plus.net
+  appconfigs.disney-plus.net
+  bam-sdk-configs.bamgrid.com
+
+================================================================================
+TOP FINDINGS SUMMARY
+================================================================================
+
+1. PRIMARY AD SERVER:
+   Google DoubleClick (pubads.g.doubleclick.net) - ONLY ad provider
+   Uses VAST/VMAP for video ads, Pre-roll positioning enabled
+
+2. MAIN TRACKING:
+   Conviva (cws.conviva.com) - Video quality metrics
+   Firebase (app-measurement.com) - General analytics
+   Adobe Omniture - Personalization testing
+
+3. INFRASTRUCTURE:
+   BAMTech/BAMGrid - Disney's proprietary streaming platform
+   14 BAMGrid-related domains identified
+   Multi-tier: prod, qa, staging, dev
+
+4. SDKS:
+   Braze - Push notifications
+   Sentry - Error reporting
+   Firebase - Analytics
+   Conviva - Video metrics
+   App Center - Distribution telemetry
+
+5. EXTRA:
+   NHL integration for sports content
+   Multiple test/sample ad URLs embedded
+   IPv4/IPv6 specific endpoints for Conviva
+
+================================================================================

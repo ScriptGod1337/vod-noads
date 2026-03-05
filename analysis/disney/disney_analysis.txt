@@ -1,0 +1,278 @@
+================================================================================
+DISNEY+ APK (v2.16.2-rc2) - COMPLETE DOMAIN & URL ANALYSIS
+================================================================================
+
+TOTAL DOMAINS FOUND: 72
+
+================================================================================
+CATEGORY 1: AD-SERVING DOMAINS & ENDPOINTS
+================================================================================
+
+Primary Ad Server:
+  pubads.g.doubleclick.net
+    - Google DFP (DoubleClick for Publishers)
+    - Multiple test URLs for VAST/VMAP ad delivery
+    - URLs include: gampad/ads endpoints with VAST & VMAP output parameters
+    
+  pagead2.googlesyndication.com
+    - Google Ad Network domain
+    - Pixel tracking endpoint: /pagead/gen_204?id=gmob-apps
+
+Related Ad Services:
+  www.googleadservices.com
+    - Deep link conversion tracking
+    - Endpoint: /pagead/conversion/app/deeplink
+
+================================================================================
+CATEGORY 2: ANALYTICS & TRACKING/BEACON DOMAINS
+================================================================================
+
+Firebase Analytics (Google):
+  firebase.google.com
+    - Firebase real-time analytics platform
+    - Event tracking and measurement
+
+Google Analytics:
+  app-measurement.com
+    - Firebase App Measurement backend
+    - Event data collection and processing
+  
+Conviva Analytics (Video QoE):
+  cws.conviva.com
+    - Primary Conviva gateway server
+    - Includes parameterized variants:
+      - %s.ipv4.cws.conviva.com
+      - %s.ipv4.testonly.conviva.com
+      - %s.ipv6.cws.conviva.com
+      - %s.ipv6.testonly.conviva.com
+  
+  pings.conviva.com
+    - Beacon ping endpoint (/ping.ping)
+    - QoE measurement data transmission
+
+Adobe Analytics (Omniture):
+  hal.testandtarget.omniture.com
+    - Adobe Test & Target (personalization/optimization)
+    - QA/test environment
+
+Google Play Services:
+  accounts.google.com
+    - OAuth2 token revocation endpoint
+    - Authentication service
+
+================================================================================
+CATEGORY 3: DISNEY CONTENT/INFRASTRUCTURE DOMAINS
+================================================================================
+
+Disney+ Core Infrastructure:
+  disneyplus.com
+    - Primary domain
+    - /downloads endpoint
+  
+  www.disneyplus.com
+    - Web-facing domain
+
+StarPlus (Regional variant):
+  starplus.com
+  startlus.com (likely typo in app for starplus.com)
+  help.starplus.com
+
+BAMTech/Bamgrid Infrastructure:
+  bam-sdk-configs.bamgrid.com
+    - SDK configuration server
+  
+  dev-bam-sdk-configs.bamgrid.com
+    - Development configuration server
+  
+  staging-bam-sdk-configs.bamgrid.com
+    - Staging configuration server
+  
+  star.api.edge.bamgrid.com
+    - Star+ API endpoint
+  
+  qa-star.api.edge.bamgrid.com
+    - QA Star API endpoint
+  
+  global.edge.bamgrid.com
+    - Global edge API
+  
+  qa.global.edge.bamgrid.com
+    - QA global edge API
+  
+  lw.bamgrid.com
+    - Lightweight/lightweight service endpoint
+  
+  pcs.bamgrid.com
+    - Playback Control Service
+  
+  vpe-static-dev-bamgrid-com-pcs.bamgrid.com
+    - VPE (Video Player Engine) static content
+  
+  github.bamtech.co
+    - BAMtech schema registry
+    - Group watch playhead event schemas
+
+Disney Content Delivery:
+  prod-ripcut-delivery.disney-plus.net
+    - Production content delivery endpoint
+  
+  qa-ripcut-delivery.disney-plus.net
+    - QA content delivery endpoint
+  
+  appconfigs.disney-plus.net
+    - App configuration server
+  
+  d2zihajmogu5jn.cloudfront.net
+    - CloudFront CDN for media assets
+    - Test content (bipbop_advanced)
+
+Disney Registration:
+  cdn.registerdisney.go.com
+    - Registration CDN
+  
+  stg.cdn.registerdisney.go.com
+    - Staging registration CDN
+
+================================================================================
+CATEGORY 4: THIRD-PARTY SDK DOMAINS
+================================================================================
+
+Braze (Customer Engagement/Push Notifications):
+  sdk.iad-01.braze.com
+    - Braze SDK endpoint (US-East)
+    - API endpoint: /api/v3/
+  
+  sondheim.braze.com
+    - Braze service endpoint
+    - API endpoint: /api/v3/
+  
+  www.braze.com
+    - Braze documentation/main domain
+
+Sentry (Error Tracking/Crash Reporting):
+  a08a5a5931d945e2b7a90c9f10818063@disney.my.sentry.io
+    - Disney Sentry project
+    - Project ID: a08a5a5931d945e2b7a90c9f10818063
+    - Endpoint: /57
+
+Microsoft/Azure:
+  install.appcenter.ms
+    - Microsoft App Center (app distribution, analytics)
+
+Amazon Services:
+  s3.amazonaws.com
+    - AWS S3 bucket storage
+  
+  www.amazon.com
+  www.amazon.ca
+  www.amazon.com.au
+    - Amazon retail links (for purchase/subscription)
+
+Apple Services:
+  apps.apple.com
+    - Apple App Store
+
+Google Services (Non-Ad):
+  play.google.com
+    - Google Play Store
+    - Subscription management endpoint
+  
+  www.googleapis.com
+    - Google APIs
+    - OAuth authentication endpoints
+  
+  github.com
+    - GitHub (code/library hosting)
+  
+  issuetracker.google.com
+    - Google Issue Tracker (bug reporting)
+
+Sports Content Partners:
+  www.nhl.com
+    - NHL (National Hockey League) content integration
+
+================================================================================
+CATEGORY 5: STANDARDS & SPECIFICATION DOMAINS
+================================================================================
+
+  dashif.org
+    - DASH Industry Forum (streaming standards)
+  
+  aomedia.org
+    - Alliance for Open Media (AV1 codec standards)
+  
+  www.w3.org
+    - World Wide Web Consortium standards
+  
+  schemas.android.com
+    - Android XML namespace schemas
+  
+  schemas.microsoft.com
+    - Microsoft XML namespace schemas
+  
+  exoplayer.dev
+    - Google ExoPlayer documentation
+  
+  developer.android.com
+    - Android developer documentation
+  
+  developer.apple.com
+    - Apple developer documentation
+
+================================================================================
+MISCELLANEOUS
+================================================================================
+
+  goo.gl
+    - Google URL shortener (error message links)
+  
+  google.com
+    - Google search integration
+  
+  localhost
+    - Local development endpoint
+  
+  appassets.androidplatform.net
+    - Android platform resources
+  
+  ns.adobe.com
+    - Adobe namespace definitions
+  
+  xce-pluck-ui.us-east-1.bamgrid.net
+    - XCE Pluck UI (error reporting/experience monitoring)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. AD NETWORK INTEGRATION:
+   - Primary ad server: Google DoubleClick (pubads.g.doubleclick.net)
+   - Uses VAST/VMAP protocol for video ads
+   - Includes NHL content with ad parameters
+   - Ad URL includes VPOS (video position), ad rules, and custom parameters
+
+2. VIDEO QoE MONITORING:
+   - Conviva is primary QoE monitoring platform
+   - Adobe Omniture for testing/targeting
+   - Comprehensive beacon tracking for video playback metrics
+
+3. SDK INTEGRATIONS:
+   - Braze: Customer engagement & push notifications
+   - Sentry: Crash/error reporting
+   - Firebase: Analytics & remote configuration
+   - Conviva: Video quality metrics
+   - Microsoft App Center: Distribution & analytics
+
+4. INFRASTRUCTURE:
+   - BAMGrid/BAMTech: Disney's proprietary streaming platform
+   - Multiple environment tiers: prod, qa, dev, staging
+   - CloudFront CDN for content delivery
+   - AWS S3 for asset storage
+
+5. TRACKING CAPABILITIES:
+   - Deep link conversion tracking via Google Services
+   - Firebase event-based analytics
+   - Conviva QoE metrics
+   - Adobe Test & Target personalization
+   - App Center telemetry
+
