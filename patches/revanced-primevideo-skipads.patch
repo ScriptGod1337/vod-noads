@@ -1,0 +1,120 @@
+diff --git a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt
+index ac3a1c4..8e28a27 100644
+--- a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt
++++ b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/Fingerprints.kt
+@@ -8,12 +8,6 @@ internal val enterServerInsertedAdBreakStateFingerprint = fingerprint {
+     accessFlags(AccessFlags.PUBLIC)
+     parameters("Lcom/amazon/avod/fsm/Trigger;")
+     returns("V")
+-    opcodes(
+-        Opcode.INVOKE_VIRTUAL,
+-        Opcode.MOVE_RESULT_OBJECT,
+-        Opcode.CONST_4,
+-        Opcode.CONST_4
+-    )
+     custom { method, classDef ->
+         method.name == "enter" && classDef.type == "Lcom/amazon/avod/media/ads/internal/state/ServerInsertedAdBreakState;"
+     }
+@@ -30,4 +24,4 @@ internal val doTriggerFingerprint = fingerprint {
+     custom { method, classDef ->
+         method.name == "doTrigger" && classDef.type == "Lcom/amazon/avod/fsm/StateBase;"
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt
+index c204c72..0b89790 100644
+--- a/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt
++++ b/patches/src/main/kotlin/app/revanced/patches/primevideo/ads/SkipAdsPatch.kt
+@@ -1,18 +1,26 @@
+ package app.revanced.patches.primevideo.ads
+ 
+ import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
+-import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
++import app.revanced.patcher.extensions.InstructionExtensions.instructions
+ import app.revanced.patcher.patch.bytecodePatch
+ import app.revanced.patches.primevideo.misc.extension.sharedExtensionPatch
+ import com.android.tools.smali.dexlib2.AccessFlags
++import com.android.tools.smali.dexlib2.Opcode
++import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
++import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+ 
+ @Suppress("unused")
+ val skipAdsPatch = bytecodePatch(
+     name = "Skip ads",
+     description = "Automatically skips video stream ads.",
+ ) {
+-    compatibleWith("com.amazon.avod.thirdpartyclient"("3.0.412.2947"))
++    compatibleWith(
++        "com.amazon.avod.thirdpartyclient"(
++            "3.0.412.2947",
++            "3.0.438.2347"
++        )
++    )
+ 
+     dependsOn(sharedExtensionPatch)
+ 
+@@ -22,12 +30,29 @@ val skipAdsPatch = bytecodePatch(
+         // Force doTrigger() access to public so we can call it from our extension.
+         doTriggerFingerprint.method.accessFlags = AccessFlags.PUBLIC.value;
+ 
+-        val getPlayerIndex = enterServerInsertedAdBreakStateFingerprint.patternMatch!!.startIndex
+         enterServerInsertedAdBreakStateFingerprint.method.apply {
+-            // Get register that stores VideoPlayer:
+-            //  invoke-virtual ->getPrimaryPlayer()
+-            //  move-result-object { playerRegister }
+-            val playerRegister = getInstruction<OneRegisterInstruction>(getPlayerIndex + 1).registerA
++            val implementation = implementation ?: throw IllegalStateException("Missing implementation for ServerInsertedAdBreakState.enter()")
++
++            // Find the instruction where we obtain the primary VideoPlayer:
++            //  invoke-virtual ... ->getPrimaryPlayer()Lcom/amazon/avod/media/playback/VideoPlayer;
++            //  move-result-object vX
++            val (getPlayerIndex, playerRegister) = implementation.instructions.withIndex().firstNotNullOf { (index, instruction) ->
++                if (instruction.opcode != Opcode.INVOKE_VIRTUAL) return@firstNotNullOf null
++
++                val methodRef = (instruction as ReferenceInstruction).reference as? MethodReference ?: return@firstNotNullOf null
++                if (methodRef.name != "getPrimaryPlayer" || methodRef.returnType != "Lcom/amazon/avod/media/playback/VideoPlayer;") {
++                    return@firstNotNullOf null
++                }
++
++                val moveResult = implementation.instructions.getOrNull(index + 1) ?: return@firstNotNullOf null
++                if (moveResult.opcode != Opcode.MOVE_RESULT_OBJECT) return@firstNotNullOf null
++
++                val reg = (moveResult as OneRegisterInstruction).registerA
++                Pair(index, reg)
++            }
++
++            // NOTE: We don't rely on a fixed opcode fingerprint index because newer Prime builds
++            // add setup/cast instructions at the beginning of the method.
+ 
+             // Reuse the params from the original method:
+             //  p0 = ServerInsertedAdBreakState
+@@ -42,4 +67,3 @@ val skipAdsPatch = bytecodePatch(
+         }
+     }
+ }
+-
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+index 4ab39e0..4acc573 100644
+--- a/settings.gradle.kts
++++ b/settings.gradle.kts
+@@ -12,6 +12,18 @@ pluginManagement {
+     }
+ }
+ 
++dependencyResolutionManagement {
++    repositories {
++        google()
++        mavenCentral()
++        maven {
++            name = "githubPackages"
++            url = uri("https://maven.pkg.github.com/revanced/registry")
++            credentials(PasswordCredentials::class)
++        }
++    }
++}
++
+ plugins {
+     id("app.revanced.patches") version "1.0.0-dev.7"
+ }
